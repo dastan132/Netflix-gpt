@@ -6,7 +6,11 @@ export const USER_LOGO =
 export const NOW_PLAYING_API =
   "https://api.themoviedb.org/3/movie/now_playing?US&page=1";
 
+export const POPULAR_MOVIE_API = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
 
+export const TOPRATED_MOVIE_API = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
+
+export const UPCOMMING_MOVIE_API = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1"
 
 
 export const API_OPTION = {
@@ -17,3 +21,6 @@ export const API_OPTION = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOWI1MTYwY2M2YmQwZTU1ZjBhMWI1YzgzNDVhMzk4NSIsIm5iZiI6MTc2ODQwNTI4MS45MzUwMDAyLCJzdWIiOiI2OTY3YjkyMTlkZTZkYTJkYjE2ODc3N2EiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.7b-hpMRGhuvnyYM9dBKSX7etzMeALQfJUl8S5RE88C0",
   },
 };
+
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500"
