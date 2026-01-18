@@ -9,16 +9,16 @@ const VideoBackground = ({ movieId }) => {
   // Fix: Don't render iframe until trailer data is available
   if (!trailerVideo) {
     return (
-      <div className="w-screen aspect-video bg-gray-900 flex items-center justify-center">
+      <div className="w-full aspect-video bg-gray-900 flex items-center justify-center">
         <div className="text-white">Loading trailer...</div>
       </div>
     );
   }
 
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <iframe
-        className="w-screen aspect-video"
+        className="w-full aspect-video"
         key={trailerVideo.key} // forces reload
         src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1`}
         title="YouTube video player"
