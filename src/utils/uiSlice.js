@@ -1,17 +1,21 @@
-// In your UI slice (e.g., uiSlice.js)
-import { createSlice } from '@reduxjs/toolkit';
+
+import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
-  name: 'ui',
+  name: "ui",
   initialState: {
     isDropdownOpen: false,
+    langChange: "en",
   },
   reducers: {
     setDropdownOpen: (state, action) => {
       state.isDropdownOpen = action.payload;
     },
+    setLanguage: (state, action) => {
+      state.langChange = action.payload;
+    },
   },
 });
 
-export const { setDropdownOpen } = uiSlice.actions;
+export const { setDropdownOpen, setLanguage, setLangButton } = uiSlice.actions;
 export default uiSlice.reducer;

@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { USER_LOGO } from "../utils/constants.js";
+import { NETFLIX_BG, USER_LOGO } from "../utils/constants.js";
 
 
 function Login() {
@@ -92,7 +92,7 @@ function Login() {
       <div className=" absolute">
         <img
           className=""
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/ce462eb6-4d7f-4c9a-9f61-93cb535a64fd/web/IN-en-20260105-TRIFECTA-perspective_5ec818ea-11f4-4bff-a409-8f36e9f9a1e2_small.jpg"
+          src={NETFLIX_BG}
           alt="Netflix background"
         />
       </div>

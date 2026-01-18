@@ -4,23 +4,36 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { NETFLIX_LOGO_URL } from "../utils/constants.js";
-import { setDropdownOpen } from "../utils/uiSlice.js";
+import { NETFLIX_LOGO_URL, SUPPORT_LANGUAGE } from "../utils/constants.js";
+import { setDropdownOpen, setLanguage } from "../utils/uiSlice.js";
+import { addToggleGPT } from "../utils/gptSlice.js";
 
 function Header() {
   const dispatch = useDispatch();
+
+  const showGptSearch = useSelector((state) => state.gpt.showGptSearch);
+
   const user = useSelector((state) => state.user);
   const isDropdownOpen = useSelector((state) => state.ui.isDropdownOpen);
+
   const navigate = useNavigate();
+
+  const handleLanguageChange = (e) => {
+    dispatch(setLanguage(e.target.value));
+  };
 
   const toggleDropdown = () => {
     dispatch(setDropdownOpen(!isDropdownOpen));
+  };
+  const toggleGptSearch = () => {
+    dispatch(addToggleGPT());
   };
 
   const handleSignOut = () => {
     dispatch(setDropdownOpen(false));
     signOut(auth);
   };
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,12 +50,30 @@ function Header() {
   }, [dispatch, navigate]);
 
   return (
-<div className="absolute left-0 right-0 px-8 py-2 bg-gradient-to-b from-black to-transparent z-10 flex justify-between items-center">
-
+    <div className="absolute left-0 right-0 px-8 py-2 bg-gradient-to-b from-black to-transparent z-10 flex justify-between items-center">
       <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO_URL} alt="logo" />
 
       {user && (
-        <div className="relative">
+        <div className="relative inline-flex">
+          {showGptSearch && (
+            <select
+              onChange={handleLanguageChange}
+              className="py-2 px-4 m-2 rounded-lg bg-gray-600 hover:bg-gray-800 text-white font-bold"
+            >
+              {SUPPORT_LANGUAGE.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+
+          <button
+            onClick={toggleGptSearch}
+            className="py-2 px-4 rounded-md text-white font-bold m-2 bg-violet-800 hover:bg-violet-950"
+          >
+            {showGptSearch?"HomePage":"GPTSearch"}
+          </button>
           <button
             onClick={toggleDropdown}
             className="flex items-center gap-2 text-white bg-transparent hover:bg-white/10 rounded px-2 py-1 transition"
@@ -71,7 +102,7 @@ function Header() {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-black text-white rounded shadow-lg">
+            <div className="absolute top-full right-0 mt-2 w-40  bg-gray-600 text-white rounded shadow-lg">
               <button
                 onClick={handleSignOut}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-700"
