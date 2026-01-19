@@ -12,7 +12,7 @@ const useTopRatedMovies = () => {
             try{
                 const responce = await fetch(TOPRATED_MOVIE_API, API_OPTION)
                 const json = await responce.json()
-                console.log(json.results)
+                //console.log(json.results)
                 dispatch(addTopRatedMovies(json.results))
             } catch(error) {
                 console.error("Error fetching movies:", error)

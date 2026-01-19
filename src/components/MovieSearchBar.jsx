@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import lang from "../utils/langConstant";
 
-function GptSearchBar() {
-  const handleGptSearch = () =>{
+function MovieSearchBar() {
+  const handleSearchBtn = () =>{
     console.log("Chat Gpt Is Expancive")
   }
   const langKey = useSelector((store) => store.ui.langChange);
@@ -16,10 +16,10 @@ function GptSearchBar() {
         <input
           type="text"
           className="m-4 p-4 col-span-9 rounded-lg "
-          placeholder={lang[langKey]?.gptSearchPlaceholder}
+          placeholder={lang[langKey]?.SearchPlaceholder}
         />
         <button
-          onClick={handleGptSearch}
+          onClick={handleSearchBtn}
           className=" col-span-3 py-2 px-4 m-4 bg-red-700 text-white font-bold hover:bg-red-900 rounded-lg"
         >
           {lang[langKey]?.search}
@@ -29,4 +29,4 @@ function GptSearchBar() {
   );
 }
 
-export default GptSearchBar;
+export default MovieSearchBar;

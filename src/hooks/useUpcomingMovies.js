@@ -12,7 +12,7 @@ const useUpcomingMovies = () => {
             try{
                 const responce = await fetch(UPCOMMING_MOVIE_API, API_OPTION)
                 const json = await responce.json()
-                console.log(json.results)
+                //console.log(json.results)
                 dispatch(addUpcomingMovies(json.results))
             } catch(error) {
                 console.error("Error fetching movies:", error)

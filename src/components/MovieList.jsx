@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
   if (!movies || movies.length === 0) return null;
-  console.log("hello", movies);
+ // console.log("hello", movies);
 
   return (
     <div className="px-6  ">

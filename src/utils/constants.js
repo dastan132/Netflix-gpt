@@ -16,6 +16,8 @@ export const TOPRATED_MOVIE_API =
 export const UPCOMMING_MOVIE_API =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
+export const SEARCH_MOVIE_ID = "https://api.themoviedb.org/3/find/external_id?external_source=imdb_id&language=en-US'"
+
 export const API_OPTION = {
   method: "GET",
   headers: {

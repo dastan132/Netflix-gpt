@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { NETFLIX_LOGO_URL, SUPPORT_LANGUAGE } from "../utils/constants.js";
 import { setDropdownOpen, setLanguage } from "../utils/uiSlice.js";
-import { addToggleGPT } from "../utils/gptSlice.js";
+import { addToggleSearchBtn } from "../utils/searchSlice.js";
 
 function Header() {
   const dispatch = useDispatch();
 
-  const showGptSearch = useSelector((state) => state.gpt.showGptSearch);
+  const showSearchBtn = useSelector((state) => state.search.showSearchBtn);
 
   const user = useSelector((state) => state.user);
   const isDropdownOpen = useSelector((state) => state.ui.isDropdownOpen);
@@ -25,8 +25,8 @@ function Header() {
   const toggleDropdown = () => {
     dispatch(setDropdownOpen(!isDropdownOpen));
   };
-  const toggleGptSearch = () => {
-    dispatch(addToggleGPT());
+  const toggleSearchBtn = () => {
+    dispatch(addToggleSearchBtn());
   };
 
   const handleSignOut = () => {
@@ -55,7 +55,7 @@ function Header() {
 
       {user && (
         <div className="relative inline-flex">
-          {showGptSearch && (
+          {showSearchBtn && (
             <select
               onChange={handleLanguageChange}
               className="py-2 px-4 m-2 rounded-lg bg-gray-600 hover:bg-gray-800 text-white font-bold"
@@ -69,10 +69,10 @@ function Header() {
           )}
 
           <button
-            onClick={toggleGptSearch}
+            onClick={toggleSearchBtn}
             className="py-2 px-4 rounded-md text-white font-bold m-2 bg-violet-800 hover:bg-violet-950"
           >
-            {showGptSearch?"HomePage":"GPTSearch"}
+            {showSearchBtn?"HomePage":"Search Movies"}
           </button>
           <button
             onClick={toggleDropdown}
