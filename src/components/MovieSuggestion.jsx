@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
 function MovieSuggestion() {
-  return (
-    <div>MovieSuggestion</div>
-  )
+  
+  return <div className=" bg-red-500 py-10 m-12">MovieSuggestion</div>;
 }
 
-export default MovieSuggestion
+export default MovieSuggestion;

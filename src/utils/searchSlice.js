@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const searchSlice = createSlice({
   name: "search",
   initialState: {
     showSearchBtn: false,
     inputMovieSearch: "",
     typingInput: "",
+    searchResults: null, 
   },
 
   reducers: {
@@ -19,8 +19,11 @@ const searchSlice = createSlice({
     submitSearch: (state, action) => {
       state.inputMovieSearch = action.payload;
     },
+     setSearchResults: (state, action) => {
+      state.searchResults = action.payload; // ✅ Add this
+    },
   },
 });
-export const { setTypingInput, addToggleSearchBtn, submitSearch } =
+export const { setTypingInput, addToggleSearchBtn, submitSearch,setSearchResults } =
   searchSlice.actions;
 export default searchSlice.reducer;

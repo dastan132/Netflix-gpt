@@ -8,21 +8,16 @@ function MovieSearchBar() {
   const dispatch = useDispatch();
   const langKey = useSelector((store) => store.ui.langChange);
 
-  const typingInput = useSelector(
-    (store) => store.search.typingInput
-  );
+  const typingInput = useSelector((store) => store.search.typingInput);
 
-  const searchQuery = useSelector(
-    (store) => store.search.inputMovieSearch
-  );
+  const searchQuery = useSelector((store) => store.search.inputMovieSearch);
 
-  // 🔥 API runs ONLY after submitSearch()
   useSearchMovies(searchQuery);
 
   const handleSearchBtn = (e) => {
     e.preventDefault();
     dispatch(submitSearch(typingInput));
-    console.log(searchQuery)
+    console.log(searchQuery);
   };
 
   return (
@@ -34,9 +29,7 @@ function MovieSearchBar() {
         <input
           type="text"
           value={typingInput}
-          onChange={(e) =>
-            dispatch(setTypingInput(e.target.value))
-          }
+          onChange={(e) => dispatch(setTypingInput(e.target.value))}
           className="m-4 p-4 col-span-9 rounded-lg"
           placeholder={lang[langKey]?.searchPlaceholder}
         />
