@@ -4,26 +4,32 @@ const searchSlice = createSlice({
   name: "search",
   initialState: {
     showSearchBtn: false,
+    typingInput: "",          // ✅ ADD THIS
     inputMovieSearch: "",
-    typingInput: "",
-    searchResults: null, 
+    searchResults: null,
   },
 
   reducers: {
-    setTypingInput: (state, action) => {
-      state.typingInput = action.payload;
-    },
     addToggleSearchBtn: (state) => {
       state.showSearchBtn = !state.showSearchBtn;
+    },
+    setTypingInput: (state, action) => {
+      state.typingInput = action.payload;
     },
     submitSearch: (state, action) => {
       state.inputMovieSearch = action.payload;
     },
-     setSearchResults: (state, action) => {
-      state.searchResults = action.payload; // ✅ Add this
+    setSearchResults: (state, action) => {
+      state.searchResults = action.payload;
     },
   },
 });
-export const { setTypingInput, addToggleSearchBtn, submitSearch,setSearchResults } =
-  searchSlice.actions;
+
+export const {
+  addToggleSearchBtn,
+  setTypingInput,
+  submitSearch,
+  setSearchResults,
+} = searchSlice.actions;
+
 export default searchSlice.reducer;

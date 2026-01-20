@@ -6,19 +6,17 @@ import { setTypingInput, submitSearch } from "../utils/searchSlice";
 
 function MovieSearchBar() {
   const dispatch = useDispatch();
-  
+
   const langKey = useSelector((store) => store.ui.langChange);
-
   const typingInput = useSelector((store) => store.search.typingInput);
-
   const searchQuery = useSelector((store) => store.search.inputMovieSearch);
 
+  // 🔥 Trigger API when searchQuery changes
   useSearchMovies(searchQuery);
 
   const handleSearchBtn = (e) => {
     e.preventDefault();
-    dispatch(submitSearch(typingInput));
-    console.log(searchQuery);
+    dispatch(submitSearch(typingInput.trim()));
   };
 
   return (
