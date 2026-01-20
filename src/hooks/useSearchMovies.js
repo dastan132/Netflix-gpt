@@ -27,7 +27,7 @@ const useSearchMovies = (query) => {
 
     searchMovies();
 
-    // 🧹 cleanup on query change/unmount
+    //  cleanup on query change/unmount
     return () => controller.abort();
   }, [query]);
 };

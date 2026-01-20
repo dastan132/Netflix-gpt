@@ -6,6 +6,7 @@ import { setTypingInput, submitSearch } from "../utils/searchSlice";
 
 function MovieSearchBar() {
   const dispatch = useDispatch();
+  
   const langKey = useSelector((store) => store.ui.langChange);
 
   const typingInput = useSelector((store) => store.search.typingInput);
