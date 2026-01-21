@@ -21,7 +21,7 @@ const MainContainer = () => {
     return () => clearInterval(interval);
   }, [dispatch, movies]);
 
-  // ⬇️ Early return AFTER hooks (this is correct)
+
   if (!movies || movies.length === 0) return null;
 
   const mainMovie = movies[randomIndex];

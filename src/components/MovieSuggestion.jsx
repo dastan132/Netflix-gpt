@@ -22,6 +22,7 @@ const MovieSuggestion = () => {
           key={movie.id}
           className="bg-gray-900 rounded-lg overflow-hidden"
         >
+
           <img
             className="w-full h-[260px] object-cover"
             src={
@@ -31,6 +32,7 @@ const MovieSuggestion = () => {
             }
             alt={movie.title}
           />
+      
           <div className="p-3 text-white">
             <h3 className="text-sm font-semibold">
               {movie.title}
