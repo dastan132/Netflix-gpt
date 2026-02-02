@@ -10,7 +10,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { NETFLIX_BG, USER_LOGO } from "../utils/constants.js";
-//import profilePic from "../assets/images/profilePIC.jpg"
 
 function Login() {
   const [isSignInForm, setIsSignForm] = useState(true);

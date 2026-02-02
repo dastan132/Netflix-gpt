@@ -4,7 +4,7 @@ const searchSlice = createSlice({
   name: "search",
   initialState: {
     showSearchBtn: false,
-    typingInput: "",          // ✅ ADD THIS
+    typingInput: "",          
     inputMovieSearch: "",
     searchResults: null,
   },
