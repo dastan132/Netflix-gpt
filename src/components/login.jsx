@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { NETFLIX_BG, USER_LOGO } from "../utils/constants.js";
-
+//import profilePic from "../assets/images/profilePIC.jpg"
 
 function Login() {
   const [isSignInForm, setIsSignForm] = useState(true);
@@ -44,7 +44,7 @@ function Login() {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: firstNameValue + " " + lastNameValue,
-            photoURL: USER_LOGO,
+            photoURL:USER_LOGO,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;

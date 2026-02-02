@@ -34,6 +34,9 @@ function Header() {
     signOut(auth);
   };
 
+  const handleAbout = () => {
+    navigate("/about");
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -50,70 +53,82 @@ function Header() {
   }, [dispatch, navigate]);
 
   return (
-    <div className="absolute left-0 right-0 px-8 py-2 bg-gradient-to-b from-black to-transparent z-10 flex justify-between items-center">
-      <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO_URL} alt="logo" />
+    <>
+      <div className="absolute left-0 right-0 px-8 py-2 bg-gradient-to-b from-black to-transparent z-10 flex justify-between items-center">
+        <img
+          className="w-44 mx-auto md:mx-0"
+          src={NETFLIX_LOGO_URL}
+          alt="logo"
+        />
 
-      {user && (
-        <div className="relative inline-flex">
-          {showSearchBtn && (
-            <select
-              onChange={handleLanguageChange}
-              className="py-2 px-4 m-2 rounded-lg bg-gray-600 hover:bg-gray-800 text-white font-bold"
-            >
-              {SUPPORT_LANGUAGE.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-          )}
-
-          <button
-            onClick={toggleSearchBtn}
-            className="py-2 px-4 rounded-md text-white font-bold m-2 bg-violet-800 hover:bg-violet-950"
-          >
-            {showSearchBtn?"HomePage":"Search Movies"}
-          </button>
-          <button
-            onClick={toggleDropdown}
-            className="flex items-center gap-2 text-white bg-transparent hover:bg-white/10 rounded px-2 py-1 transition"
-          >
-            <img
-              src={user.photoURL || "https://i.pravatar.cc/40"}
-              alt="User avatar"
-              className="w-8 h-8 rounded-full object-cover"
-            />
-
-            <svg
-              className={`w-4 h-4 transition-transform ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 9-7 7-7-7"
-              />
-            </svg>
-          </button>
-
-          {isDropdownOpen && (
-            <div className="absolute top-full right-0 mt-2 w-40  bg-gray-600 text-white rounded shadow-lg">
-              <button
-                onClick={handleSignOut}
-                className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+        {user && (
+          <div className="relative inline-flex">
+            {showSearchBtn && (
+              <select
+                onChange={handleLanguageChange}
+                className="py-2 px-4 m-2 rounded-lg bg-gray-600 hover:bg-gray-800 text-white font-bold"
               >
-                Sign out
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
+                {SUPPORT_LANGUAGE.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            )}
+
+            <button
+              onClick={toggleSearchBtn}
+              className="py-2 px-4 rounded-md text-white font-bold m-2 bg-violet-800 hover:bg-violet-950"
+            >
+              {showSearchBtn ? "HomePage" : "Search Movies"}
+            </button>
+            <button
+              onClick={toggleDropdown}
+              className="flex items-center gap-2 text-white bg-transparent hover:bg-white/10 rounded px-2 py-1 transition"
+            >
+              <img
+                src={user.photoURL || "https://i.pravatar.cc/40"}
+                alt="User avatar"
+                className="w-8 h-8 rounded-full object-cover"
+              />
+
+              <svg
+                className={`w-4 h-4 transition-transform ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 9-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute top-full right-0 mt-2 w-40  bg-gray-600 text-white rounded shadow-lg">
+                <button
+                  onClick={handleAbout}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+                >
+                  About
+                </button>
+                <button
+                  onClick={handleSignOut}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

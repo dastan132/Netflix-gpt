@@ -8,6 +8,7 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
 import useUpcomingMovies from "../hooks/useUpcomingMovies.js";
 import { useSelector } from "react-redux";
 import MovieSearch from "./MovieSearch.jsx";
+import { Outlet } from "react-router-dom";
 
 function Browse() {
   const Movie = useSelector((store) => store.search.showSearchBtn);
@@ -19,6 +20,7 @@ function Browse() {
   return (
     <>
       <div>
+    <Outlet />
         <Header />
         {Movie ? (
           <MovieSearch />

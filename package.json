@@ -46,6 +46,7 @@
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
     "autoprefixer": "^10.4.23",
+    "jest": "^30.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"
   }
